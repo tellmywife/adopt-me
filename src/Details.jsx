@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import ErrorBoundary from './ErrorBoundary.jsx'
 import Carousel from './Carousel.jsx'
+import Modal from './Modal.jsx'
 
 const Details = () => {
   const params = useParams()
   const [isLoading, setLoading] = useState(true)
+  const [showModal, setModal] = useState(false)
   const [pet, setPet] = useState({})
 
   useEffect(() => {
@@ -19,6 +21,8 @@ const Details = () => {
     setPet(json.pets[0])
   }
 
+  const toggleModal = () => setModal(!showModal)
+
   if (isLoading) {
     return <h2>loading … </h2>
   }
@@ -31,8 +35,19 @@ const Details = () => {
       <div>
         <h1>{name}</h1>
         <h2>{`${animal} — ${breed} — ${city}, ${state}`}</h2>
-        <button>Adopt {name}</button>
+        <button onClick={toggleModal}>Adopt {name}</button>
         <p>{description}</p>
+        {showModal ? (
+          <Modal>
+            <div>
+              <h1>Would you like to adopt {name}?</h1>
+              <div className="buttons">
+                <a href="https://bit.ly/pet-adopt">Yes</a>
+                <button onClick={toggleModal}>No</button>
+              </div>
+            </div>
+          </Modal>
+        ) : null}
       </div>
     </div>
   )
