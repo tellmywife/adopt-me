@@ -1,12 +1,19 @@
 import { StrictMode } from 'react'
-import Pet from './Pet.jsx'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import Details from './Details.jsx'
+import Search from './Search.jsx'
 
 const App = () => {
   return (
-    <div>
-      <h1>Adopt me!</h1>
-      <Pet name="Maluz" animal="dog" breed="pudle" />
-    </div>
+    <BrowserRouter>
+      <header>
+        <Link to="/">Adopt Me!</Link>
+      </header>
+      <Routes>
+        <Route path="/details/:id" element={<Details />} />
+        <Route path="/" element={<Search />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 const container = document.getElementById('root')
