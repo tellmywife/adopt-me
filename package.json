@@ -2,25 +2,28 @@
   "name": "adopt-me",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/App.jsx",
   "scripts": {
-    "build": "esbuild ./src/App.jsx --bundle --splitting --format=esm --minify --inject:./react-shim.js --target=chrome100,safari11 --outdir=public",
+    "build": "esbuild ./src/App.jsx --bundle --splitting --format=esm --minify --inject:./react-shim.js --target=es2022,chrome100,safari11 --outdir=public",
     "dev": "npm run build -- --servedir=public",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
-    "lint": "eslint ./src --quite",
+    "lint": "eslint ./src --ext .js,.jsx --quiet --cache",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "Vova Puchkov <vova.puchkoff@gmail.com>",
-  "license": "ISC",
-  "devDependencies": {
-    "esbuild": "^0.14.38",
-    "eslint": "^8.14.0",
-    "eslint-config-prettier": "^8.5.0",
-    "prettier": "^2.6.2"
   },
   "dependencies": {
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
-  }
+  },
+  "devDependencies": {
+    "esbuild": "^0.14.38",
+    "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.4",
+    "prettier": "^2.6.2"
+  },
+  "keywords": [],
+  "author": "Vova Puchkov <vova.puchkoff@gmail.com>",
+  "license": "ISC"
 }

@@ -1,15 +1,18 @@
-import Pet from './Pet'
+import { StrictMode } from 'react'
+import Pet from './Pet.jsx'
 
 const App = () => {
-  return React.createElement('div', {}, [
-    React.createElement('h1', {}, 'Adopt Me!'),
-    React.createElement(Pet, {
-      name: 'Malu',
-      animal: 'Dog',
-      breed: 'pudle',
-    }),
-  ])
+  return (
+    <div>
+      <h1>Adopt me!</h1>
+      <Pet name="Maluz" animal="dog" breed="pudle" />
+    </div>
+  )
 }
 const container = document.getElementById('root')
 const root = ReactDOM.createRoot(container)
-root.render(React.createElement(React.StrictMode, {}, React.createElement(App)))
+root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+)
