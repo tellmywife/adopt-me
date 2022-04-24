@@ -1,0 +1,26 @@
+{
+  "name": "adopt-me",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild ./src/App.jsx --bundle --splitting --format=esm --minify --inject:./react-shim.js --target=chrome100,safari11 --outdir=public",
+    "dev": "npm run build -- --servedir=public",
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "lint": "eslint ./src --quite",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Vova Puchkov <vova.puchkoff@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.14.38",
+    "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.6.2"
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  }
+}
